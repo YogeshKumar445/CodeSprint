@@ -1,11 +1,17 @@
 const app = require("./app");
+const connectDB = require("./config/db");
+const env = require("./config/env");
 
-const PORT = process.env.PORT || 5000;
+async function startServer() {
+  await connectDB();
 
-app.listen(PORT, () => {
-  console.log("======================================");
-  console.log(`🚀 CodeSprint backend running on port ${PORT}`);
-  console.log(`📍 Health: http://localhost:${PORT}/api/health`);
-  console.log(`📍 API v1: http://localhost:${PORT}/api/v1`);
-  console.log("======================================");
-});
+  app.listen(env.PORT, () => {
+    console.log("======================================");
+    console.log(`🚀 CodeSprint backend running on port ${env.PORT}`);
+    console.log(`📍 Health: http://localhost:${env.PORT}/api/health`);
+    console.log(`📍 API v1: http://localhost:${env.PORT}/api/v1`);
+    console.log("======================================");
+  });
+}
+
+startServer();

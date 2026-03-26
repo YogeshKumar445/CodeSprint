@@ -2,6 +2,7 @@ const express = require("express");
 const authRoutes = require("./authRoutes");
 const problemRoutes = require("./problemRoutes");
 const submissionRoutes = require("./submissionRoutes");
+const leaderboardRoutes = require("./leaderboardRoutes");
 
 const router = express.Router();
 
@@ -15,5 +16,6 @@ router.get("/", (req, res) => {
 router.use("/auth", authRoutes);
 router.use("/problems", problemRoutes);
 router.use("/submissions", submissionRoutes);
+router.use("/leaderboard", leaderboardRoutes);
 
 module.exports = router;

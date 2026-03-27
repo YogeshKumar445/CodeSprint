@@ -6,7 +6,8 @@ import SignupPage from "./pages/SignupPage";
 import ProblemsPage from "./pages/ProblemsPage";
 import ProblemDetailPage from "./pages/ProblemDetailPage";
 import LeaderboardPage from "./pages/LeaderboardPage";
-import NotFoundPage from "./pages/NotFoundPage.jsx";
+import NotFoundPage from "./pages/NotFoundPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
   return (
@@ -17,7 +18,14 @@ export default function App() {
           <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<SignupPage />} />
           <Route path="problems" element={<ProblemsPage />} />
-          <Route path="problems/:id" element={<ProblemDetailPage />} />
+          <Route
+            path="problems/:id"
+            element={
+              <ProtectedRoute>
+                <ProblemDetailPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="leaderboard" element={<LeaderboardPage />} />
           <Route path="home" element={<Navigate to="/" replace />} />
           <Route path="*" element={<NotFoundPage />} />

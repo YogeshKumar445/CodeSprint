@@ -4,12 +4,15 @@ const {
   getProblems,
   getProblemById,
 } = require("../controllers/problemController");
+const { protect } = require("../middlewares/authMiddleware");
+const { adminOnly } = require("../middlewares/adminMiddleware");
 
 const router = express.Router();
 
-// For MVP: open endpoints
-router.post("/", createProblem);
 router.get("/", getProblems);
 router.get("/:id", getProblemById);
+
+// admin only
+router.post("/", protect, adminOnly, createProblem);
 
 module.exports = router;

@@ -21,6 +21,11 @@ export default function Navbar() {
 
           {isAuthenticated ? (
             <>
+              {user?.role === "admin" && (
+                <Link to="/admin/problems/new" className="hover:text-indigo-600">
+                  Add Problem
+                </Link>
+              )}
               <Link to="/profile" className="hover:text-indigo-600">Profile</Link>
               <span className="text-sm text-gray-600">Hi, {user?.name}</span>
               <button onClick={handleLogout} className="px-3 py-1 rounded bg-red-500 text-white">

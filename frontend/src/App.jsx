@@ -10,6 +10,8 @@ import NotFoundPage from "./pages/NotFoundPage";
 import ProfilePage from "./pages/ProfilePage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicOnlyRoute from "./components/PublicOnlyRoute";
+import AdminRoute from "./components/AdminRoute";
+import AdminAddProblemPage from "./pages/AdminAddProblemPage";
 
 export default function App() {
   return (
@@ -18,22 +20,8 @@ export default function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
 
-          <Route
-            path="login"
-            element={
-              <PublicOnlyRoute>
-                <LoginPage />
-              </PublicOnlyRoute>
-            }
-          />
-          <Route
-            path="signup"
-            element={
-              <PublicOnlyRoute>
-                <SignupPage />
-              </PublicOnlyRoute>
-            }
-          />
+          <Route path="login" element={<PublicOnlyRoute><LoginPage /></PublicOnlyRoute>} />
+          <Route path="signup" element={<PublicOnlyRoute><SignupPage /></PublicOnlyRoute>} />
 
           <Route path="problems" element={<ProblemsPage />} />
           <Route
@@ -53,6 +41,15 @@ export default function App() {
               <ProtectedRoute>
                 <ProfilePage />
               </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="admin/problems/new"
+            element={
+              <AdminRoute>
+                <AdminAddProblemPage />
+              </AdminRoute>
             }
           />
 

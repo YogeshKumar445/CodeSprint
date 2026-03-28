@@ -14,13 +14,18 @@ export default function Navbar() {
     <nav className="bg-white border-b shadow-sm">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <Link to="/" className="text-xl font-bold text-indigo-600">CodeSprint</Link>
+
         <div className="flex items-center gap-4">
           <Link to="/problems">Problems</Link>
           <Link to="/leaderboard">Leaderboard</Link>
+
           {isAuthenticated ? (
             <>
+              <Link to="/profile" className="hover:text-indigo-600">Profile</Link>
               <span className="text-sm text-gray-600">Hi, {user?.name}</span>
-              <button onClick={handleLogout} className="px-3 py-1 rounded bg-red-500 text-white">Logout</button>
+              <button onClick={handleLogout} className="px-3 py-1 rounded bg-red-500 text-white">
+                Logout
+              </button>
             </>
           ) : (
             <>
